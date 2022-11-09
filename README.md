@@ -1,10 +1,6 @@
 # MusicAutobot
 
-Using Deep Learning to generate pop music! 
-
-You can also experiment through the web app - [musicautobot.com](http://musicautobot.com)
-
-![Screenshot](images/musicautobot_screenshot.png)
+Using Deep Learning to generate electro music 🤖
 
 ## Overview
 
@@ -22,39 +18,7 @@ This project aims to leverage these powerful language models and apply them to m
  * [BERT](https://github.com/google-research/bert) Token Masking
  * Sequence To Sequence Translation - Using chords to predict melody and vice versa.
 
-Training on multiple tasks means we can generate some really cool predictions (Check out this [Notebook](notebooks/multitask_transformer/Generate.ipynb)):
-1. [Harmonization](http://musicautobot.com/#/predict/2b4f5e6613f366bad7b4f39c61be32b9) - generate accompanying chords
-2. [Melody](http://musicautobot.com/#/predict/3087b73963aaa2bae62424808a251628) - new melody from existing chord progression
-3. Remix [tune](http://musicautobot.com/#/predict/1bbfcb942133414a5664a35a7e7b5612) - new song in the rhythm of a reference song
-4. Remix [beat](http://musicautobot.com/#/predict/71d7ff59f67fffa98614c841101e1b6b) - same tune, different rhythm
 
-
-## How it works
-
-Details are explained in this 4 part series:
-* [Part I](https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a) - Creating a Pop Music Generator
-* [Part II](https://towardsdatascience.com/practical-tips-for-training-a-music-model-755c62560ec2) - Implementation details
-* [Part III](https://towardsdatascience.com/a-multitask-music-model-with-bert-transformer-xl-and-seq2seq-3d80bd2ea08e) - Multitask Transformer
-* [Part IV](https://towardsdatascience.com/how-to-remix-the-chainsmokers-with-a-music-bot-6b920359248c) - Composing a song with Multitask
-
-
-## Example Notebooks
-
-1. Play with predictions on Google Colab
- * [MusicTransformer Generate](https://colab.research.google.com/github/bearpelican/musicautobot/blob/master/notebooks/music_transformer/Generate_colab.ipynb) - Loads a pretrained model and shows how to generate/predict new notes
- * [MultitaskTransformer Generate](https://colab.research.google.com/github/bearpelican/musicautobot/blob/master/notebooks/multitask_transformer/Generate_colab.ipynb) - Loads a pretrained model and shows how to harmonize, generate new melodies, and remix existing songs.
-
-2. MusicTransformer
- * [Train](notebooks/music_transformer/Train.ipynb) - End to end example on how to create a dataset from midi files and train a model from scratch
- * [Generate](notebooks/music_tranformer/Generate.ipynb) - Loads a pretrained model and shows how to generate/predict new notes
- 
-3. MultitaskTransformer
- * [Train](notebooks/multitask_transformer/Train.ipynb) - End to end example on creating a seq2seq and masked dataset for multitask training.
- * [Generate](notebooks/multitask_tranformer/Generate.ipynb) - Loads a pretrained model and shows how to harmonize, generate new melodies, and remix existing songs.
- 
-4. Data Encoding
- * [Midi2Tensor](notebooks/data_encoding/Midi2Tensor.ipynb) - Shows how the libary internally encodes midi files to tensors for training.
- * [MusicItem](notebooks/data_encoding/MusicItem-Transforms.ipynb) - MusicItem is a wrapper that makes it easy to manipulate midi data. Convert midi to tensor, apply data transformations, even play music or display the notes within browser.
 
 ## Pretrained Models
 
@@ -69,6 +33,7 @@ Each model has an additional `keyC` version. `keyC` means that the model has bee
  * Large (2.1 GB) - [AnyKey](https://ashaw-midi-web-server.s3-us-west-2.amazonaws.com/pretrained/MultitaskLarge.pth) | [KeyC](https://ashaw-midi-web-server.s3-us-west-2.amazonaws.com/pretrained/MultitaskLargeKeyC.pth)
 
 For details on how to load these models, follow the [Generate](notebooks/music_tranformer/Generate.ipynb) and [Multitask Generate](notebooks/multitask_tranformer/Generate.ipynb) notebooks
+
 
 ## Source Code
 
@@ -105,13 +70,13 @@ SCRIPT=run_multitask.py bash run_ddp.sh --epochs 14 --save music_model --batch_s
 2. Run:  
 
 ```bash
-git clone https://github.com/bearpelican/musicautobot.git
+git clone https://github.com/JordanNDE/musicgen.git
 
-cd musicautobot
+cd musicgen
 
 conda env update -f environment.yml
 
-source activate musicautobot
+source activate musicgen
 ```
 
 3. Install Musescore - to view sheet music within a jupyter notebook  
